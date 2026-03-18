@@ -75,6 +75,10 @@
   /* Product table */
   .prod-table { width: 100%; border-collapse: collapse; }
   .prod-table th { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; padding: 6px 8px; border-bottom: 1px solid var(--border); text-align: left; }
+  .tip-icon { font-size: 15px; color: #7c3aed; cursor: help; position: relative; display: inline-block; vertical-align: middle; margin-left: 3px; }
+  .tip-icon .tip-box { visibility: hidden; opacity: 0; transition: opacity .18s; position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #3b1f6e; color: #fff; font-size: 12px; font-weight: 400; text-transform: none; letter-spacing: 0; padding: 8px 12px; border-radius: 8px; width: 220px; line-height: 1.5; box-shadow: 0 4px 12px rgba(0,0,0,.18); z-index: 100; pointer-events: none; }
+  .tip-icon .tip-box::after { content:''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: #3b1f6e; }
+  .tip-icon:hover .tip-box { visibility: visible; opacity: 1; }
   .prod-table td { padding: 8px 8px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
   .prod-table tr:last-child td { border-bottom: none; }
   .prod-table tbody tr:hover { background: #f8f9fc; }
@@ -133,6 +137,9 @@
       <option value="11">Noviembre</option>
       <option value="12">Diciembre</option>
     </select>
+  </div>
+  <div id="notice-2024" style="display:none;margin-bottom:16px;padding:10px 14px;background:#fef9c3;border-left:3px solid #ca8a04;border-radius:6px;font-size:13px;color:#92400e">
+    ⚠️ En 2024 algunos pedidos se realizaban informalmente por fuera del sistema, por lo cual los datos pueden no ser exactos.
   </div>
 
   <!-- KPIs -->
@@ -1210,6 +1217,7 @@ function showEmpty(msg) {
 function applyFilters() {
   const data = getFiltered();
   const yr = document.getElementById('f-year').value;
+  document.getElementById('notice-2024').style.display = yr === '2024' ? 'block' : 'none';
   if (data.length === 0) {
     renderKPIs([]);
     // Recreate canvases if they were replaced
@@ -1243,6 +1251,71 @@ const FINANCE_2025 = {
   "12": {"rev":808500,   "cost":530169,  "profit":278331,  "margin":34.4}
 };
 // Fuente: Product Master 2025 × cantidades vendidas (~90% del volumen cubierto)
+
+const PROD_MARGIN_2025 = {
+  "Yerba Yemari 500g":                           {"4":33,"5":33,"6":38,"7":41,"8":40,"9":40,"10":40,"11":36,"12":36},
+  "PACK de 20 Yerba 1/2Kg Yemari":               {"4":33,"5":33,"6":24,"7":30,"8":30,"9":30},
+  "Yerba Caballo Negro Tradicional 1Kg":          {"4":35,"5":35,"6":37,"7":37,"8":35,"9":38,"10":36,"11":39,"12":39},
+  "Yerba Caballo Negro Barbacoa 1Kg":             {"4":35,"5":35,"6":37,"7":38,"8":35,"9":38,"10":36,"11":39,"12":39},
+  "Yerba Caballo Negro Barbacua 1Kg":             {"4":35,"5":35,"6":37,"7":38,"8":35,"9":38,"10":36,"11":39,"12":39},
+  "PACK Yerba Caballo Negro x 10Kg":              {"4":35,"5":35,"6":37,"7":37,"8":35,"9":38},
+  "Miel La Yaya 1Kg":                             {"4":34,"5":33,"6":33,"7":33,"8":33,"9":33,"10":33,"11":33,"12":33},
+  "Miel Estancia La Dominga 1Kg (pet)":           {"4":31,"5":34,"6":34,"7":33,"8":34,"9":34},
+  "Detergente 1/2L":                              {"4":41,"5":33,"6":33,"7":33,"8":33,"9":40,"10":37,"11":37,"12":37},
+  "Esponja lavavajillas de yute biodegradable":   {"4":100,"5":50,"6":40,"7":40,"8":43,"9":51,"10":51,"11":43,"12":43},
+  "Pastas de mani Natural Oddi's 350grs (vidrio)":{"9":47,"10":47,"11":47,"12":47},
+  "Granola El Maiten 1kg":                        {"11":32,"12":32},
+  "Acondicionador Solido Pacifica AMADEA":        {"10":21,"11":24,"12":23},
+  "Shampoo sólido PARAÍSA ARTICA":                {"10":26,"11":26,"12":25},
+  "Shampoo sólido PARAÍSA INDICA":                {"10":26,"11":26,"12":25},
+  "Shampoo sólido PARAÍSA PACIFICA":              {"10":26,"11":26,"12":25},
+  "Shampoo solido Paraisa ATLANTICA":             {"10":26,"11":26,"12":25},
+  "JABON TOCADOR sólido Pack AMUR":               {"10":19,"11":24,"12":22},
+  "JABON TOCADOR sólido Pack INDA":               {"10":19,"11":24,"12":22},
+  "JABON TOCADOR sólido pack NILA":               {"10":19,"11":24,"12":22},
+  "JABON TOCADOR sólido Pack TORSA":              {"10":19,"11":24,"12":22},
+  "JABON TOCADOR sólido Pack YUSPE":              {"10":19,"11":24,"12":22},
+  "JABON TOCADOR sólido Pack VOLTA":              {"10":19,"11":24,"12":22},
+  "JABON TOCADOR sólido Pack AMECA":              {"10":19,"11":24,"12":22},
+  "JABON TOCADOR sólido Pack RIN":                {"10":19,"11":24,"12":22},
+  "Jabones de castilla YUSPE":                    {"9":25},
+  "Jabones de castilla VOLTA":                    {"9":25},
+  "Jabones de castilla TORSA":                    {"9":25},
+  "Jabones de castilla RIN":                      {"9":25},
+  "Jabones de castilla NILA":                     {"9":25},
+  "Jabones de castilla INDA":                     {"9":25},
+  "Jabones de castilla AMECA":                    {"9":25},
+  "Jabones de castilla AMUR":                     {"9":25},
+  // Aliases — nombres abreviados usados en el formulario
+  "Esponja yute":                                 {"4":100,"5":50,"6":40,"7":40,"8":43,"9":51,"10":51,"11":43,"12":43},
+  "Miel La Dominga 1Kg":                          {"4":31,"5":34,"6":34,"7":33,"8":34,"9":34},
+  "Miel La Yaya 1Kg (vidrio)":                    {"4":34,"5":33,"6":33,"7":33,"8":33,"9":33,"10":33,"11":33,"12":33},
+  "Acondicionador AMADEA":                        {"10":21,"11":24,"12":23},
+  "Shampoo ARTICA":                               {"10":26,"11":26,"12":25},
+  "Shampoo INDICA":                               {"10":26,"11":26,"12":25},
+  "Shampoo ATLANTICA":                            {"10":26,"11":26,"12":25},
+  "Pastas de maní Oddi\u2019s 350g":              {"9":47,"10":47,"11":47,"12":47},
+  "PACK Yemari x20":                              {"4":33,"5":33,"6":24,"7":30,"8":30,"9":30},
+  "PACK Yemari x20b":                             {"4":33,"5":33,"6":24,"7":30,"8":30,"9":30},
+  "PACK C.Negro Barb x10":                        {"4":35,"5":35,"6":37,"7":37,"8":35,"9":38},
+  "PACK C.Negro Trad x10":                        {"4":35,"5":35,"6":37,"7":37,"8":35,"9":38},
+  "PACK C.Negro x10Kg":                           {"4":35,"5":35,"6":37,"7":37,"8":35,"9":38},
+  "Yerba C.Negro Tereré 1/2kg":                   {"11":43}
+};
+
+function prodMargin(product, mon, yr) {
+  // Solo 2025 tiene datos de margen
+  if (yr !== '2025') return null;
+  const pm = PROD_MARGIN_2025[product];
+  if (!pm) return null;
+  if (mon) {
+    return pm[String(mon)] ?? null;
+  }
+  // Promedio de todos los meses disponibles
+  const vals = Object.values(pm);
+  if (vals.length === 0) return null;
+  return Math.round(vals.reduce((a,b)=>a+b,0) / vals.length);
+}
 
 const FAMILIES_2025 = {
   total:         153,   // familias registradas en todos los grados
@@ -1410,9 +1483,8 @@ function renderKPIs(data) {
       <div class="kpi-sub">${yr}</div>
     </div>
     <div class="kpi cyan">
-      <div class="kpi-label">Líneas de Pedido</div>
+      <div class="kpi-label">Pedidos</div>
       <div class="kpi-value">${totalOrders.toLocaleString('es-AR')}</div>
-      <div class="kpi-sub">1 línea = 1 producto pedido por 1 grado</div>
     </div>
     <div class="kpi green">
       <div class="kpi-label">Productos Activos</div>
@@ -1711,18 +1783,21 @@ function renderTable(data) {
   const sorted = Object.entries(totals).sort((a,b)=>b[1]-a[1]);
   const maxVal = sorted[0]?.[1] || 1;
 
-  const yr = document.getElementById('f-year').value;
+  const yr  = document.getElementById('f-year').value;
+  const mon = document.getElementById('f-month').value;
   // Overlap months for YoY: months present in both 2024 and 2025
   const months24 = new Set(RAW.filter(r=>r.a==='2024').map(r=>r.m));
   const months25 = new Set(RAW.filter(r=>r.a==='2025').map(r=>r.m));
   const overlapMonths = [...months24].filter(m => months25.has(m));
-  const showYoY = yr === '2025' || yr === '2024';
+  const showYoY    = yr === '2025' || yr === '2024';
+  const showMargin = yr === '2025';
 
   let html = `<thead><tr>
     <th>Producto</th><th>Cat.</th><th>Uds vendidas</th><th>% Share</th>
-    <th title="Promedio de unidades pedidas por grado en los meses que compró">Uds/mes/grado ⓘ</th>
-    <th title="Mediana de meses entre recompras del mismo grado. c/1 = repone cada mes.">Reposición ⓘ</th>
-    ${showYoY ? '<th title="Crecimiento vs mismo período del año anterior">YoY ⓘ</th>' : ''}
+    <th>Uds/mes/grado <span class="tip-icon">ⓘ<span class="tip-box">Promedio de unidades pedidas por grado en los meses que compró ese producto.</span></span></th>
+    <th>Reposición <span class="tip-icon">ⓘ<span class="tip-box">Mediana de meses entre recompras del mismo grado. Valor 1 = repone cada mes.</span></span></th>
+    ${showMargin ? '<th>Margen <span class="tip-icon">ⓘ<span class="tip-box">' + (mon ? 'Margen del mes seleccionado.' : 'Promedio de margen en todos los meses del año.') + '</span></span></th>' : ''}
+    ${showYoY ? '<th>YoY <span class="tip-icon">ⓘ<span class="tip-box">Crecimiento en unidades vs el mismo período del año anterior.</span></span></th>' : ''}
   </tr></thead><tbody>`;
 
   for (const [p, qty] of sorted) {
@@ -1765,6 +1840,13 @@ function renderTable(data) {
       <td class="pct">${pct}%</td>
       <td style="font-weight:600;color:var(--accent2)">${avg}</td>
       <td><span class="freq-pill ${repoClass}">${repoLabel}</span></td>
+      ${showMargin ? (() => {
+        const mg = prodMargin(p, mon, yr);
+        if (mg === null) return '<td class="pct">—</td>';
+        const mgColor = mg >= 40 ? '#059669' : mg >= 30 ? '#0891b2' : '#d97706';
+        const mgBg    = mg >= 40 ? '#d1fae5' : mg >= 30 ? '#e0f2fe' : '#fef3c7';
+        return `<td><span class="freq-pill" style="background:${mgBg};color:${mgColor};font-weight:700">${mg}%</span></td>`;
+      })() : ''}
       ${yoyCell}
     </tr>`;
   }
