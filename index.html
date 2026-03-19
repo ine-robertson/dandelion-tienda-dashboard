@@ -89,6 +89,11 @@
   .freq-pill.high { background: #d1fae5; color: var(--accent3); }
   .freq-pill.med  { background: #fef3c7; color: var(--accent4); }
   .freq-pill.low  { background: #fee2e2; color: var(--accent5); }
+  .cat-header { background: #f1f0fb; cursor: pointer; user-select: none; }
+  .cat-header:hover { background: #ebe8f8; }
+  .cat-header td { padding: 8px 10px; font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .5px; border-bottom: 2px solid #c4b5fd; }
+  .cat-toggle { font-size: 11px; margin-right: 6px; display: inline-block; transition: transform .2s; }
+  .cat-toggle.collapsed { transform: rotate(-90deg); }
 </style>
 </head>
 <body>
@@ -149,7 +154,7 @@
   <div class="grid-2">
     <div class="card">
       <div class="card-title">Top Productos — Unidades Vendidas</div>
-      <canvas id="chart-products" height="260"></canvas>
+      <canvas id="chart-products"></canvas>
     </div>
     <div class="card">
       <div class="card-title">Evolución Mensual — Unidades</div>
@@ -1143,7 +1148,94 @@ const RAW = [
 {"p":"Yerba Yemari 500g","g":"S - 8vo","m":6,"mn":"Jun","a":"2025","q":3},
 {"p":"Yerba Yemari 500g","g":"S - 9no","m":4,"mn":"Abr","a":"2025","q":10},
 {"p":"Yerba Yemari 500g","g":"S - 9no","m":9,"mn":"Sep","a":"2025","q":2}
-];
+,
+  {"p":"Jabones de castilla INDA","g":"S - 10mo","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"S - 10mo","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"P - 3ro","m":9,"mn":"Sep","a":"2025","q":2},
+  {"p":"Jabones de castilla NILA","g":"S - 11mo","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"S - 11mo","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla INDA","g":"S - 10mo","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"S - 10mo","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla VOLTA","g":"P - 1ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla INDA","g":"P - 1ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla NILA","g":"S - 8vo","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"S - 8vo","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla TORSA","g":"P - 3ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla RIN","g":"P - 3ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla NILA","g":"P - 3ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"P - 3ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla YUSPE","g":"P - 1ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla RIN","g":"P - 1ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla NILA","g":"P - 1ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"P - 1ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla VOLTA","g":"S - 9no","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"S - 9no","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla RIN","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla INDA","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla TORSA","g":"P - 3ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla INDA","g":"P - 3ro","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla VOLTA","g":"J - Jardin 1","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla RIN","g":"J - Jardin 1","m":9,"mn":"Sep","a":"2025","q":5},
+  {"p":"Jabones de castilla NILA","g":"J - Jardin 1","m":9,"mn":"Sep","a":"2025","q":10},
+  {"p":"Jabones de castilla INDA","g":"J - Jardin 1","m":9,"mn":"Sep","a":"2025","q":10},
+  {"p":"Jabones de castilla AMUR","g":"J - Jardin 1","m":9,"mn":"Sep","a":"2025","q":6},
+  {"p":"Jabones de castilla VOLTA","g":"P - 2do","m":9,"mn":"Sep","a":"2025","q":2},
+  {"p":"Jabones de castilla AMUR","g":"P - 2do","m":9,"mn":"Sep","a":"2025","q":2},
+  {"p":"Jabones de castilla YUSPE","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla VOLTA","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla TORSA","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla RIN","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla NILA","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla INDA","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMECA","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla AMUR","g":"P - 5to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla VOLTA","g":"P - 6to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"Jabones de castilla INDA","g":"P - 6to","m":9,"mn":"Sep","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"P - 1ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"P - 1ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"P - 1ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack VOLTA","g":"S - 11mo","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"P - 3ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack VOLTA","g":"P - 3ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMECA","g":"P - 3ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack RIN","g":"S - 10mo","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido pack NILA","g":"S - 8vo","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"S - 8vo","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack VOLTA","g":"S - 8vo","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido pack NILA","g":"P - 5to","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"P - 3ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"P - 1ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido pack NILA","g":"P - 1ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack YUSPE","g":"P - 1ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack VOLTA","g":"P - 1ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack TORSA","g":"P - 1ro","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido pack NILA","g":"P - 5to","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"J - Jardin 1","m":10,"mn":"Oct","a":"2025","q":4},
+  {"p":"JABON TOCADOR sólido pack NILA","g":"J - Jardin 1","m":10,"mn":"Oct","a":"2025","q":2},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"J - Jardin 1","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack YUSPE","g":"J - Jardin 1","m":10,"mn":"Oct","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack TORSA","g":"J - Jardin 1","m":10,"mn":"Oct","a":"2025","q":2},
+  {"p":"JABON TOCADOR sólido pack NILA","g":"P - 1ro","m":11,"mn":"Nov","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"S - 10mo","m":11,"mn":"Nov","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack TORSA","g":"P - 3ro","m":11,"mn":"Nov","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"J - Jardin 1","m":11,"mn":"Nov","a":"2025","q":2},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"J - Jardin 1","m":11,"mn":"Nov","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"S - 10mo","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido pack NILA","g":"S - 10mo","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"S - 10mo","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"S - 10mo","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack VOLTA","g":"S - 10mo","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"J - Jardin 1","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido pack NILA","g":"J - Jardin 1","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack RIN","g":"J - Jardin 1","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack TORSA","g":"J - Jardin 1","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"J - Jardin 1","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"J - Jardin 1","m":12,"mn":"Dic","a":"2025","q":2},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"J - Jardin 1","m":12,"mn":"Dic","a":"2025","q":2},
+  {"p":"JABON TOCADOR sólido Pack VOLTA","g":"J - Jardin 1","m":12,"mn":"Dic","a":"2025","q":2},
+  {"p":"JABON TOCADOR sólido Pack INDA","g":"P - 1ro","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack AMUR","g":"P - 1ro","m":12,"mn":"Dic","a":"2025","q":1},
+  {"p":"JABON TOCADOR sólido Pack YUSPE","g":"P - 1ro","m":12,"mn":"Dic","a":"2025","q":1}];
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 const MONTHS = [3,4,5,6,7,8,9,10,11,12];
@@ -1157,10 +1249,11 @@ function gradeLevel(g) {
 }
 
 function prodCategory(p) {
-  if (p.toLowerCase().includes('yerba')) return 'Yerba';
-  if (p.toLowerCase().includes('miel')) return 'Miel';
-  if (p.toLowerCase().includes('detergente')) return 'Detergente';
-  if (p.toLowerCase().includes('pack') || p.toLowerCase().includes('mercado')) return 'Pack';
+  const pl = p.toLowerCase();
+  if (pl.includes('yerba') || pl.includes('c.negro') || pl.includes('yemari') || pl.includes('tereré') || pl.includes('terere') ||
+      pl.includes('miel') || pl.includes('pasta') || pl.includes('maní') || pl.includes('mani') || pl.includes('granola')) return 'Alimentos';
+  if (pl.includes('detergente') || pl.includes('esponja') || pl.includes('limpiador') || pl.includes('groen')) return 'Limpieza';
+  if (pl.includes('shampoo') || pl.includes('acondicionador') || pl.includes('jabon') || pl.includes('jabón') || pl.includes('jabones') || pl.includes('paraísa') || pl.includes('paraisa')) return 'Cosmética';
   return 'Otro';
 }
 
@@ -1168,6 +1261,37 @@ function fmt(n) {
   if (n >= 1000) return (n/1000).toFixed(1)+'k';
   return n.toString();
 }
+
+// ─── NORMALIZACIÓN DE NOMBRES DE PRODUCTOS ───────────────────────────────────
+// Unifica variantes del mismo producto (nombres cortos vs largos, jabones por variante)
+const PROD_NORM_MAP = {
+  // Shampoos
+  'Shampoo sólido PARAÍSA ARTICA':    'Shampoo ARTICA',
+  'Shampoo sólido PARAÍSA INDICA':    'Shampoo INDICA',
+  'Shampoo sólido PARAÍSA PACIFICA':  'Shampoo PACIFICA',
+  'Shampoo solido Paraisa ATLANTICA': 'Shampoo ATLANTICA',
+  'Shampoo Solido Paraisa':           'Shampoo (sin variante)',
+  // Acondicionador
+  'Acondicionador Solido Pacifica AMADEA': 'Acondicionador AMADEA',
+  // Jabones — unifica "Jabones de castilla X" y "JABON TOCADOR sólido Pack X"
+  'Jabones de castilla AMUR':         'Jabón de Castilla AMUR',
+  'JABON TOCADOR sólido Pack AMUR':   'Jabón de Castilla AMUR',
+  'Jabones de castilla INDA':         'Jabón de Castilla INDA',
+  'JABON TOCADOR sólido Pack INDA':   'Jabón de Castilla INDA',
+  'Jabones de castilla NILA':         'Jabón de Castilla NILA',
+  'JABON TOCADOR sólido pack NILA':   'Jabón de Castilla NILA',
+  'Jabones de castilla RIN':          'Jabón de Castilla RIN',
+  'JABON TOCADOR sólido Pack RIN':    'Jabón de Castilla RIN',
+  'Jabones de castilla YUSPE':        'Jabón de Castilla YUSPE',
+  'JABON TOCADOR sólido Pack YUSPE':  'Jabón de Castilla YUSPE',
+  'Jabones de castilla AMECA':        'Jabón de Castilla AMECA',
+  'JABON TOCADOR sólido Pack AMECA':  'Jabón de Castilla AMECA',
+  'Jabones de castilla VOLTA':        'Jabón de Castilla VOLTA',
+  'JABON TOCADOR sólido Pack VOLTA':  'Jabón de Castilla VOLTA',
+  'Jabones de castilla TORSA':        'Jabón de Castilla TORSA',
+  'JABON TOCADOR sólido Pack TORSA':  'Jabón de Castilla TORSA',
+};
+RAW.forEach(r => { if (PROD_NORM_MAP[r.p]) r.p = PROD_NORM_MAP[r.p]; });
 
 // Chart defaults
 Chart.defaults.color = '#6b7585';
@@ -1188,6 +1312,14 @@ function destroyChart(id) {
 }
 
 // ─── FILTER + RENDER ─────────────────────────────────────────────────────────
+function toggleCat(catId) {
+  const rows = document.querySelectorAll(`.${catId}`);
+  const toggle = document.getElementById(`toggle-${catId}`);
+  const isHidden = rows[0]?.style.display === 'none';
+  rows.forEach(r => r.style.display = isHidden ? '' : 'none');
+  toggle.classList.toggle('collapsed', !isHidden);
+}
+
 function getFiltered() {
   const yr  = document.getElementById('f-year').value;
   const lvl = document.getElementById('f-level').value;
@@ -1266,31 +1398,24 @@ const PROD_MARGIN_2025 = {
   "Pastas de mani Natural Oddi's 350grs (vidrio)":{"9":47,"10":47,"11":47,"12":47},
   "Granola El Maiten 1kg":                        {"11":32,"12":32},
   "Acondicionador Solido Pacifica AMADEA":        {"10":21,"11":24,"12":23},
-  "Shampoo sólido PARAÍSA ARTICA":                {"10":26,"11":26,"12":25},
-  "Shampoo sólido PARAÍSA INDICA":                {"10":26,"11":26,"12":25},
-  "Shampoo sólido PARAÍSA PACIFICA":              {"10":26,"11":26,"12":25},
-  "Shampoo solido Paraisa ATLANTICA":             {"10":26,"11":26,"12":25},
-  "JABON TOCADOR sólido Pack AMUR":               {"10":19,"11":24,"12":22},
-  "JABON TOCADOR sólido Pack INDA":               {"10":19,"11":24,"12":22},
-  "JABON TOCADOR sólido pack NILA":               {"10":19,"11":24,"12":22},
-  "JABON TOCADOR sólido Pack TORSA":              {"10":19,"11":24,"12":22},
-  "JABON TOCADOR sólido Pack YUSPE":              {"10":19,"11":24,"12":22},
-  "JABON TOCADOR sólido Pack VOLTA":              {"10":19,"11":24,"12":22},
-  "JABON TOCADOR sólido Pack AMECA":              {"10":19,"11":24,"12":22},
-  "JABON TOCADOR sólido Pack RIN":                {"10":19,"11":24,"12":22},
-  "Jabones de castilla YUSPE":                    {"9":25},
-  "Jabones de castilla VOLTA":                    {"9":25},
-  "Jabones de castilla TORSA":                    {"9":25},
-  "Jabones de castilla RIN":                      {"9":25},
-  "Jabones de castilla NILA":                     {"9":25},
-  "Jabones de castilla INDA":                     {"9":25},
-  "Jabones de castilla AMECA":                    {"9":25},
-  "Jabones de castilla AMUR":                     {"9":25},
+  "Shampoo ARTICA":                               {"10":26,"11":26,"12":25},
+  "Shampoo INDICA":                               {"10":26,"11":26,"12":25},
+  "Shampoo PACIFICA":                             {"10":26,"11":26,"12":25},
+  "Shampoo ATLANTICA":                            {"10":26,"11":26,"12":25},
+  "Jabón de Castilla AMUR":                       {"9":25,"10":19,"11":24,"12":22},
+  "Jabón de Castilla INDA":                       {"9":25,"10":19,"11":24,"12":22},
+  "Jabón de Castilla NILA":                       {"9":25,"10":19,"11":24,"12":22},
+  "Jabón de Castilla TORSA":                      {"9":25,"10":19,"11":24,"12":22},
+  "Jabón de Castilla YUSPE":                      {"9":25,"10":19,"11":24,"12":22},
+  "Jabón de Castilla VOLTA":                      {"9":25,"10":19,"11":24,"12":22},
+  "Jabón de Castilla AMECA":                      {"9":25,"10":19,"11":24,"12":22},
+  "Jabón de Castilla RIN":                        {"9":25,"10":19,"11":24,"12":22},
   // Aliases — nombres abreviados usados en el formulario
   "Esponja yute":                                 {"4":100,"5":50,"6":40,"7":40,"8":43,"9":51,"10":51,"11":43,"12":43},
   "Miel La Dominga 1Kg":                          {"4":31,"5":34,"6":34,"7":33,"8":34,"9":34},
   "Miel La Yaya 1Kg (vidrio)":                    {"4":34,"5":33,"6":33,"7":33,"8":33,"9":33,"10":33,"11":33,"12":33},
   "Acondicionador AMADEA":                        {"10":21,"11":24,"12":23},
+  "Acondicionador Solido Pacifica AMADEA":        {"10":21,"11":24,"12":23},
   "Shampoo ARTICA":                               {"10":26,"11":26,"12":25},
   "Shampoo INDICA":                               {"10":26,"11":26,"12":25},
   "Shampoo ATLANTICA":                            {"10":26,"11":26,"12":25},
@@ -1515,7 +1640,10 @@ function renderProducts(data) {
   const pcts   = values.map(v => total ? (v/total*100).toFixed(1) : 0);
 
   destroyChart('products');
-  const ctx = document.getElementById('chart-products').getContext('2d');
+  // Altura dinámica: 32px por barra + margen
+  const canvas = document.getElementById('chart-products');
+  canvas.height = Math.max(260, sorted.length * 32 + 40);
+  const ctx = canvas.getContext('2d');
   charts.products = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -1524,9 +1652,9 @@ function renderProducts(data) {
         data: values,
         backgroundColor: sorted.map(([p]) => {
           const c = prodCategory(p);
-          if (c==='Yerba') return '#7c3aed';
-          if (c==='Miel')  return '#f59e0b';
-          if (c==='Detergente') return '#06b6d4';
+          if (c==='Alimentos')  return '#7c3aed';
+          if (c==='Limpieza')   return '#06b6d4';
+          if (c==='Cosmética')  return '#ec4899';
           return '#10b981';
         }),
         borderRadius: 4,
@@ -1792,63 +1920,96 @@ function renderTable(data) {
   const showYoY    = yr === '2025' || yr === '2024';
   const showMargin = yr === '2025';
 
+  const colSpan = 6 + (showMargin ? 1 : 0) + (showYoY ? 1 : 0);
+  const CAT_ORDER = ['Alimentos', 'Limpieza', 'Cosmética', 'Otro'];
+  const CAT_ICONS = { Alimentos: '🥬', Limpieza: '🧴', 'Cosmética': '💆', Otro: '✨' };
+
+  // Group by category
+  const bycat = {};
+  for (const [p, qty] of sorted) {
+    const cat = prodCategory(p);
+    if (!bycat[cat]) bycat[cat] = [];
+    bycat[cat].push([p, qty]);
+  }
+
   let html = `<thead><tr>
-    <th>Producto</th><th>Cat.</th><th>Uds vendidas</th><th>% Share</th>
+    <th>Producto</th><th>Uds vendidas</th><th>% Share</th>
     <th>Uds/mes/grado <span class="tip-icon">ⓘ<span class="tip-box">Promedio de unidades pedidas por grado en los meses que compró ese producto.</span></span></th>
     <th>Reposición <span class="tip-icon">ⓘ<span class="tip-box">Mediana de meses entre recompras del mismo grado. Valor 1 = repone cada mes.</span></span></th>
     ${showMargin ? '<th>Margen <span class="tip-icon">ⓘ<span class="tip-box">' + (mon ? 'Margen del mes seleccionado.' : 'Promedio de margen en todos los meses del año.') + '</span></span></th>' : ''}
     ${showYoY ? '<th>YoY <span class="tip-icon">ⓘ<span class="tip-box">Crecimiento en unidades vs el mismo período del año anterior.</span></span></th>' : ''}
   </tr></thead><tbody>`;
 
-  for (const [p, qty] of sorted) {
-    const pct = total ? (qty/total*100).toFixed(1) : 0;
-    const barW = Math.round(qty/maxVal*100);
-    const cat = prodCategory(p);
-    const avg = avgUnitsPerMonthPerGrade(data, p);
-    const med = medianReorder(data, p);
+  for (const cat of CAT_ORDER) {
+    let prods = bycat[cat];
+    if (!prods || prods.length === 0) continue;
 
-    let repoLabel, repoClass;
-    if (med === null) {
-      repoLabel = 'dato único'; repoClass = '';
-    } else if (med <= 1) {
-      repoLabel = 'c/1 mes'; repoClass = 'high';
-    } else if (med <= 2) {
-      repoLabel = `c/${med} meses`; repoClass = 'med';
-    } else {
-      repoLabel = `c/${med} meses`; repoClass = 'low';
+    // Sub-orden especial para Cosmética: Shampoo → Jabones → Acondicionador → resto
+    if (cat === 'Cosmética') {
+      const subOrder = p => {
+        const pl = p.toLowerCase();
+        if (pl.includes('shampoo')) return 0;
+        if (pl.includes('jabon') || pl.includes('jabón') || pl.includes('jabones')) return 1;
+        if (pl.includes('acondicionador')) return 2;
+        return 3;
+      };
+      prods = [...prods].sort((a, b) => subOrder(a[0]) - subOrder(b[0]) || b[1] - a[1]);
     }
 
-    let yoyCell = '';
-    if (showYoY) {
-      const yoyPct = yoyForProduct(p, overlapMonths);
-      if (yoyPct === null) {
-        yoyCell = '<td class="pct">nuevo</td>';
-      } else {
-        const sign = yoyPct >= 0 ? '+' : '';
-        const col = yoyPct >= 0 ? 'var(--accent3)' : 'var(--accent5)';
-        const bg  = yoyPct >= 0 ? '#d1fae5' : '#fee2e2';
-        yoyCell = `<td><span class="freq-pill" style="background:${bg};color:${col}">${sign}${yoyPct}%</span></td>`;
-      }
-    }
-    html += `<tr>
-      <td><strong>${p}</strong></td>
-      <td><span class="pct">${cat}</span></td>
-      <td>
-        <div>${qty}</div>
-        <div class="bar-bg"><div class="bar-fill" style="width:${barW}%"></div></div>
+    const catTotal = prods.reduce((s,[,q])=>s+q,0);
+    const catId = 'cat-' + cat.toLowerCase();
+    html += `<tr class="cat-header" onclick="toggleCat('${catId}')">
+      <td colspan="${colSpan}">
+        <span class="cat-toggle" id="toggle-${catId}">▼</span>
+        ${CAT_ICONS[cat]} ${cat}
+        <span style="font-weight:400;color:var(--muted);margin-left:8px;font-size:11px">${prods.length} producto${prods.length>1?'s':''} · ${catTotal.toLocaleString('es-AR')} uds</span>
       </td>
-      <td class="pct">${pct}%</td>
-      <td style="font-weight:600;color:var(--accent2)">${avg}</td>
-      <td><span class="freq-pill ${repoClass}">${repoLabel}</span></td>
-      ${showMargin ? (() => {
-        const mg = prodMargin(p, mon, yr);
-        if (mg === null) return '<td class="pct">—</td>';
-        const mgColor = mg >= 40 ? '#059669' : mg >= 30 ? '#0891b2' : '#d97706';
-        const mgBg    = mg >= 40 ? '#d1fae5' : mg >= 30 ? '#e0f2fe' : '#fef3c7';
-        return `<td><span class="freq-pill" style="background:${mgBg};color:${mgColor};font-weight:700">${mg}%</span></td>`;
-      })() : ''}
-      ${yoyCell}
     </tr>`;
+
+    for (const [p, qty] of prods) {
+      const pct  = total ? (qty/total*100).toFixed(1) : 0;
+      const barW = Math.round(qty/maxVal*100);
+      const avg  = avgUnitsPerMonthPerGrade(data, p);
+      const med  = medianReorder(data, p);
+
+      let repoLabel, repoClass;
+      if (med === null)    { repoLabel = 'dato único'; repoClass = ''; }
+      else if (med <= 1)   { repoLabel = 'c/1 mes';    repoClass = 'high'; }
+      else if (med <= 2)   { repoLabel = `c/${med} meses`; repoClass = 'med'; }
+      else                 { repoLabel = `c/${med} meses`; repoClass = 'low'; }
+
+      let yoyCell = '';
+      if (showYoY) {
+        const yoyPct = yoyForProduct(p, overlapMonths);
+        if (yoyPct === null) {
+          yoyCell = '<td class="pct">nuevo</td>';
+        } else {
+          const sign = yoyPct >= 0 ? '+' : '';
+          const col  = yoyPct >= 0 ? 'var(--accent3)' : 'var(--accent5)';
+          const bg   = yoyPct >= 0 ? '#d1fae5' : '#fee2e2';
+          yoyCell = `<td><span class="freq-pill" style="background:${bg};color:${col}">${sign}${yoyPct}%</span></td>`;
+        }
+      }
+
+      html += `<tr class="cat-row ${catId}">
+        <td><strong>${p}</strong></td>
+        <td>
+          <div>${qty}</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:${barW}%"></div></div>
+        </td>
+        <td class="pct">${pct}%</td>
+        <td style="font-weight:600;color:var(--accent2)">${avg}</td>
+        <td><span class="freq-pill ${repoClass}">${repoLabel}</span></td>
+        ${showMargin ? (() => {
+          const mg = prodMargin(p, mon, yr);
+          if (mg === null) return '<td class="pct">—</td>';
+          const mgColor = mg >= 40 ? '#059669' : mg >= 30 ? '#0891b2' : '#d97706';
+          const mgBg    = mg >= 40 ? '#d1fae5' : mg >= 30 ? '#e0f2fe' : '#fef3c7';
+          return `<td><span class="freq-pill" style="background:${mgBg};color:${mgColor};font-weight:700">${mg}%</span></td>`;
+        })() : ''}
+        ${yoyCell}
+      </tr>`;
+    }
   }
   html += '</tbody>';
   document.getElementById('prod-table').innerHTML = html;
