@@ -159,6 +159,45 @@
   .access-edit  { background: var(--amber-light);  color: #92400e; }
   .access-none  { background: #f3f4f6; color: var(--muted); }
 
+  /* ── TIENDANUBE CTA BUTTON ── */
+  .cta-tienda {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--green); color: #fff; font-size: 15px; font-weight: 700;
+    padding: 14px 28px; border-radius: 10px; text-decoration: none;
+    margin: 20px 0 8px; border: none; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(58,125,68,.35); transition: background .15s, transform .1s;
+    width: 100%;
+  }
+  .cta-tienda:hover { background: #2d6435; transform: translateY(-1px); }
+  .cta-tienda .cta-icon { font-size: 22px; }
+
+  /* ── SIDEBAR TIENDA BUTTON ── */
+  .sidebar-cta {
+    margin: 12px 16px 4px;
+    display: flex; align-items: center; gap: 8px; justify-content: center;
+    background: var(--green); color: #fff; font-size: 13px; font-weight: 700;
+    padding: 10px 14px; border-radius: 8px; text-decoration: none;
+    box-shadow: 0 2px 8px rgba(58,125,68,.3); transition: background .15s;
+  }
+  .sidebar-cta:hover { background: #2d6435; color: #fff !important; border-left-color: transparent !important; }
+
+  /* ── FAQ ── */
+  .faq-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 16px; font-weight: 600; font-size: 13px; cursor: pointer;
+    background: var(--card); user-select: none;
+  }
+  .faq-q:hover { background: var(--green-light); }
+  .faq-q .arrow { font-size: 12px; color: var(--muted); transition: transform .2s; }
+  .faq-body { padding: 12px 16px; font-size: 13px; color: #374151; background: #fafafa; border-top: 1px solid var(--border); display: none; }
+  .faq-item.open .faq-body { display: block; }
+  .faq-item.open .arrow { transform: rotate(90deg); }
+
+  /* ── CALENDAR EMBED ── */
+  .calendar-wrap { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin: 12px 0; }
+  .calendar-wrap iframe { display: block; width: 100%; border: none; }
+
   /* ── DIVIDER ── */
   hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 
@@ -193,8 +232,12 @@
     </div>
   </div>
 
+  <a href="https://tiendadientedeleon.mitiendanube.com/" target="_blank" class="sidebar-cta">🛍️ Ir a la Tienda</a>
+
   <div class="sidebar-section">Navegación</div>
   <a href="#resumen" class="active">Resumen Ejecutivo</a>
+  <a href="#referentes">Para Referentes</a>
+  <a href="#faq">Preguntas Frecuentes</a>
   <a href="#roles">Roles y Responsabilidades</a>
   <a href="#roles" class="sub">→ Familia Gestora (FGP)</a>
   <a href="#roles" class="sub">→ Pool Logístico</a>
@@ -207,9 +250,9 @@
   <a href="#checklists">Checklists Operativos</a>
   <a href="#accesos">Accesos y Permisos</a>
   <a href="#piloto">Prueba Piloto</a>
-  <a href="#pendientes">Pendientes / TBD</a>
 
   <div class="sidebar-section" style="margin-top:auto">Proyecto</div>
+  <a href="gestion-proveedores.html">📦 Gestión con Proveedores</a>
   <a href="https://ine-robertson.github.io/dandelion-tienda-dashboard/" target="_blank">📊 Dashboard de Ventas</a>
   <a href="#">📋 Formulario de Pedidos</a>
   <a href="#">📅 Calendario de Turnos</a>
@@ -240,8 +283,12 @@
         <div class="attr"><strong>Proyecto:</strong> Tienda Dandelion — Escuela Waldorf</div>
         <div class="attr"><strong>Estado:</strong> Draft v0.1</div>
         <div class="attr"><strong>Última actualización:</strong> Marzo 2026</div>
-        <div class="attr"><strong>Equipo:</strong> Ines Robertson · Jose Brizi · Maximiliano Contreras · Esteban Próspero · Yuliana Longhi · Lucas</div>
+        <div class="attr"><strong>Subcélula Tienda:</strong> Yuliana Longhi · Maria Martini · Ines Robertson</div>
+        <div class="attr"><strong>Comisión de Recursos:</strong> Maximiliano Contreras · Lucas Di Stefano · Esteban Próspero</div>
       </div>
+      <a href="https://tiendadientedeleon.mitiendanube.com/" target="_blank" class="cta-tienda">
+        <span class="cta-icon">🛍️</span> Visitá la Tienda Diente de León
+      </a>
     </div>
 
     <div class="callout callout-warn">
@@ -300,22 +347,27 @@
     <div class="section" id="roles">
       <h2><span class="icon">👥</span> Roles y Responsabilidades</h2>
 
-      <h3>Equipo del Proyecto</h3>
+      <h3>🛍️ Subcélula Tienda</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Responsable de la operación y gestión de la Tienda Diente de León.</p>
       <table class="wiki-table">
-        <thead><tr><th>Persona</th><th>Rol asignado</th><th>Notas</th></tr></thead>
+        <thead><tr><th>Persona</th><th>Rol</th><th>Notas</th></tr></thead>
         <tbody>
-          <tr><td><strong>Ines Robertson</strong></td><td><span class="badge badge-pilot">Soporte Digital</span></td><td>Dashboard, wiki, formularios</td></tr>
-          <tr><td><strong>Jose Brizi</strong></td><td><span class="badge badge-draft">[TBD]</span></td><td></td></tr>
-          <tr><td><strong>Maximiliano Contreras</strong></td><td><span class="badge badge-draft">[TBD]</span></td><td></td></tr>
-          <tr><td><strong>Esteban Próspero</strong></td><td><span class="badge badge-draft">[TBD]</span></td><td></td></tr>
-          <tr><td><strong>Yuliana Longhi</strong></td><td><span class="badge badge-draft">[TBD]</span></td><td></td></tr>
-          <tr><td><strong>Lucas</strong></td><td><span class="badge badge-draft">[TBD]</span></td><td></td></tr>
+          <tr><td><strong>Yuliana Longhi</strong></td><td><span class="badge badge-active">Coordinación General · Ejecución Logística</span></td><td>Referente principal, coordinación de entregas y referentes</td></tr>
+          <tr><td><strong>Maria Martini</strong></td><td><span class="badge badge-active">Gestión del Proveedor (FGP)</span></td><td></td></tr>
+          <tr><td><strong>Ines Robertson</strong></td><td><span class="badge badge-pilot">Soporte Digital</span></td><td>Tienda Virtual, Formularios, Códigos QR, Procesos, Dashboards de métricas, Flyers</td></tr>
         </tbody>
       </table>
-      <div class="callout callout-warn">
-        <div class="icon">📝</div>
-        <div>Los roles marcados con <strong>[TBD]</strong> se confirman en la reunión de kickoff. Los tres roles disponibles son: <em>FGP (Gestión del Proveedor)</em>, <em>Pool Logístico</em>, <em>Gestoría de Tienda</em>.</div>
-      </div>
+
+      <h3>📦 Comisión de Recursos</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Conjunto de proyectos de abastecimiento: Diente de León, otras ventas comunitarias y SEF.</p>
+      <table class="wiki-table">
+        <thead><tr><th>Persona</th><th>Rol</th><th>Notas</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Maximiliano Contreras</strong></td><td><span class="badge badge-active">Comisión de Recursos</span></td><td></td></tr>
+          <tr><td><strong>Lucas Di Stefano</strong></td><td><span class="badge badge-active">Comisión de Recursos</span></td><td></td></tr>
+          <tr><td><strong>Esteban Próspero</strong></td><td><span class="badge badge-active">Comisión de Recursos</span></td><td></td></tr>
+        </tbody>
+      </table>
 
       <h3>Familia Gestora del Proveedor (FGP)</h3>
       <p>Es el vínculo estable entre el proyecto y cada proveedor. Puede haber una FGP por proveedor o por categoría de producto. <strong>No es responsable de la logística operativa</strong> — su rol es estratégico y comunicacional.</p>
@@ -433,28 +485,28 @@
       <h3>B. Armado y Entrega de Pedidos</h3>
       <p>Existen dos tipos de pedido con dinámicas distintas:</p>
       <table class="wiki-table">
-        <thead><tr><th>Tipo</th><th>Frecuencia</th><th>Responsable armado</th><th>Entrega</th></tr></thead>
+        <thead><tr><th>Tipo</th><th>Frecuencia</th><th>Cómo se compra</th><th>Entrega</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong>Pedidos comunitarios</strong></td>
+            <td><strong>Pedidos comunitarios mensuales</strong></td>
             <td>1 vez al mes</td>
-            <td>Pool (armado en escuela)</td>
-            <td>Al referente de cada grado en la escuela</td>
+            <td>A través de la tienda virtual</td>
+            <td>Por grado, en la escuela, coordinado con el referente</td>
           </tr>
           <tr>
-            <td><strong>Pedidos externos (TiendaNube)</strong></td>
-            <td>1 vez por semana (ej: viernes)</td>
-            <td>Pool (armado en escuela o punto de retiro)</td>
-            <td>Retiro en punto estratégico o despacho por correo</td>
+            <td><strong>Pedidos en Tienda de Claudio</strong></td>
+            <td>Durante el mes, cuando la familia lo necesite</td>
+            <td>Obligatorio comprar y pagar por la tienda virtual — <strong>no se acepta pago en el lugar</strong></td>
+            <td>La familia presenta el código QR a Claudio. <strong>Claudio no entrega sin QR.</strong></td>
           </tr>
         </tbody>
       </table>
 
-      <div class="callout callout-info">
-        <div class="icon">📦</div>
+      <div class="callout callout-danger">
+        <div class="icon">🔒</div>
         <div>
-          <div class="callout-title">Puntos de retiro estratégicos</div>
-          Se busca cubrir: Córdoba capital, Saldán, Villa Allende, Mendiolaza, La Calera y Río Ceballos. Cada punto de retiro debe tener al menos una familia responsable que confirme disponibilidad de forma rotativa. <strong>[TBD: definir puntos y responsables]</strong>
+          <div class="callout-title">Regla sin excepciones: sin QR no hay entrega</div>
+          Para los pedidos en la Tienda de Claudio, el código QR es el único comprobante válido de pago. No se entrega mercadería por promesa de pago posterior, transferencia no confirmada ni ningún otro medio. El QR llega al mail únicamente cuando el pago fue procesado.
         </div>
       </div>
     </div>
@@ -508,14 +560,16 @@
         </div>
       </div>
 
-      <h3>Automatizaciones planeadas (Apps Script)</h3>
+      <h3>Automatizaciones planeadas</h3>
       <table class="wiki-table">
-        <thead><tr><th>Trigger</th><th>Acción automática</th><th>Estado</th></tr></thead>
+        <thead><tr><th>Cuándo</th><th>Qué pasa automáticamente</th><th>Estado</th></tr></thead>
         <tbody>
           <tr><td>Se asigna turno de retiro</td><td>Email + evento en calendario al colaborador asignado</td><td><span class="badge badge-draft">Pendiente</span></td></tr>
           <tr><td>48hs antes del turno</td><td>Recordatorio por email con checklist adjunto</td><td><span class="badge badge-draft">Pendiente</span></td></tr>
           <tr><td>Retiro completado</td><td>Notificación a la FGP y a recepción en escuela</td><td><span class="badge badge-draft">Pendiente</span></td></tr>
           <tr><td>Stock bajo el punto de pedido</td><td>Alerta a la FGP correspondiente</td><td><span class="badge badge-draft">Pendiente</span></td></tr>
+          <tr><td>Nuevo pedido a proveedor registrado</td><td>Notificación al equipo con detalle del pedido, fecha de retiro y responsable asignado</td><td><span class="badge badge-draft">Pendiente</span></td></tr>
+          <tr><td>Pedido a proveedor confirmado por FGP</td><td>Registro automático en la planilla de pedidos y aviso al pool logístico</td><td><span class="badge badge-draft">Pendiente</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -559,65 +613,30 @@
     <!-- ACCESOS -->
     <div class="section" id="accesos">
       <h2><span class="icon">🔐</span> Accesos y Permisos</h2>
-      <p>Para funcionar dentro del proyecto, cada colaborador necesita los siguientes accesos según su rol:</p>
+      <p>Solo requieren gestión de acceso las herramientas internas del equipo. La tienda, la wiki y el dashboard son públicos.</p>
 
       <table class="wiki-table">
         <thead>
           <tr>
-            <th>Herramienta</th>
-            <th>FGP</th>
-            <th>Pool Logístico</th>
-            <th>Gestoría de Tienda</th>
+            <th>Rol</th>
+            <th>Qué necesita</th>
+            <th>Herramientas</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Google Form — Solicitud de pedido</td>
-            <td><span class="access-pill access-full">Editor</span></td>
-            <td><span class="access-pill access-none">No necesita</span></td>
-            <td><span class="access-pill access-read">Viewer</span></td>
+            <td><strong>Referente de Grado</strong></td>
+            <td>Escanear códigos QR en el punto de retiro</td>
+            <td><span class="access-pill access-full">Celular con cámara</span> — no requiere acceso a ningún sistema</td>
           </tr>
           <tr>
-            <td>Google Form — Retiro realizado</td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-            <td><span class="access-pill access-full">Completa</span></td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-          </tr>
-          <tr>
-            <td>Google Form — Recepción en escuela</td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-            <td><span class="access-pill access-full">Completa</span></td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-          </tr>
-          <tr>
-            <td>Google Sheets — Planilla operativa</td>
-            <td><span class="access-pill access-edit">Editor</span></td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-            <td><span class="access-pill access-full">Editor</span></td>
-          </tr>
-          <tr>
-            <td>Google Calendar — Turnos</td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-            <td><span class="access-pill access-full">Editor</span></td>
-          </tr>
-          <tr>
-            <td>TiendaNube</td>
-            <td><span class="access-pill access-none">No necesita</span></td>
-            <td><span class="access-pill access-none">No necesita</span></td>
-            <td><span class="access-pill access-full">Admin</span></td>
-          </tr>
-          <tr>
-            <td>Wiki (esta página)</td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-            <td><span class="access-pill access-edit">Editor</span></td>
-          </tr>
-          <tr>
-            <td>Dashboard de Ventas</td>
-            <td><span class="access-pill access-read">Viewer</span></td>
-            <td><span class="access-pill access-none">No necesita</span></td>
-            <td><span class="access-pill access-full">Editor</span></td>
+            <td><strong>Gestión con Proveedores</strong><br><small style="color:var(--muted)">FGP · Comisión de Recursos · Pool</small></td>
+            <td>Solicitar pedidos, registrar retiros y seguir el calendario</td>
+            <td>
+              <span class="access-pill access-full">Google Form</span> — Solicitud de pedidos<br>
+              <span class="access-pill access-edit">Google Sheets</span> — Planilla operativa<br>
+              <span class="access-pill access-read">Google Calendar</span> — Turnos y fechas
+            </td>
           </tr>
         </tbody>
       </table>
@@ -626,7 +645,15 @@
         <div class="icon">📬</div>
         <div>
           <div class="callout-title">¿Cómo solicitar acceso?</div>
-          Escribir a <strong>[TBD: email coordinación]</strong> indicando nombre, rol y herramienta. Los accesos se otorgan antes del primer turno asignado.
+          Escribir a <strong>dientedeleon-admin@googlegroups.com</strong> indicando nombre, rol y herramienta. Los accesos se otorgan antes del primer turno asignado.
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="icon">💡</div>
+        <div>
+          <div class="callout-title">Tip para las familias: creá tu cuenta en la primera compra</div>
+          Al comprar por primera vez en la tienda virtual, recomendamos crear una cuenta. Así la próxima vez el proceso es mucho más rápido: los datos ya están guardados y no hace falta completarlos de nuevo. Los referentes pueden compartir este tip a las familias de su grado.
         </div>
       </div>
     </div>
@@ -642,12 +669,12 @@
           <tr>
             <td><strong>Etapa 1</strong> — Definición</td>
             <td>Confirmar roles, armar formularios, crear calendario compartido, definir puntos de pedido por producto</td>
-            <td><span class="badge badge-draft">En proceso</span></td>
+            <td><span class="badge badge-active">Completada</span></td>
           </tr>
           <tr>
             <td><strong>Etapa 2</strong> — Reclutamiento</td>
             <td>Convocar familias al pool, asignar FGPs por proveedor, capacitar brevemente</td>
-            <td><span class="badge badge-draft">Pendiente</span></td>
+            <td><span class="badge badge-active">Completada</span></td>
           </tr>
           <tr>
             <td><strong>Etapa 3</strong> — Primer ciclo</td>
@@ -668,22 +695,169 @@
       </table>
     </div>
 
-    <!-- PENDIENTES -->
-    <div class="section" id="pendientes">
-      <h2><span class="icon">📌</span> Pendientes / TBD</h2>
-      <p>Los siguientes puntos requieren decisión del equipo antes de que el sistema pueda operar:</p>
-      <ul class="checklist">
-        <li><div class="box"></div> Definir quién autoriza los pedidos a proveedores (¿FGP sola o requiere aprobación?)</li>
-        <li><div class="box"></div> Nombrar el/la primer coordinador/a del pool logístico</li>
-        <li><div class="box"></div> Definir los puntos de retiro estratégicos y sus responsables</li>
-        <li><div class="box"></div> Crear el Calendario Google compartido de turnos</li>
-        <li><div class="box"></div> Crear los 3 formularios Google (solicitud, retiro, recepción)</li>
-        <li><div class="box"></div> Definir email de contacto para solicitar accesos</li>
-        <li><div class="box"></div> Establecer puntos de pedido por producto (cuándo activar reposición)</li>
-        <li><div class="box"></div> Definir frecuencia y día de armado de pedidos externos (¿viernes?)</li>
-        <li><div class="box"></div> Abrir cuenta TiendaNube y cargar catálogo inicial</li>
-        <li><div class="box"></div> Reclutar mínimo 6 familias para el pool inicial</li>
+    <!-- PARA REFERENTES -->
+    <div class="section" id="referentes">
+      <h2><span class="icon">📣</span> Para Referentes de Grado</h2>
+
+      <div class="callout callout-tip">
+        <div class="icon">🌱</div>
+        <div>
+          <div class="callout-title">Este mensaje fue enviado a los referentes por WhatsApp</div>
+          Compartimos esta información para que puedas consultarla cuando quieras y también acercarla a las familias de tu grado.
+        </div>
+      </div>
+
+      <p>Queremos compartir con ustedes la evolución de este proyecto, que busca seguir fortaleciendo la vida comunitaria de la escuela.</p>
+      <p>En esta nueva etapa, el proyecto cambia su enfoque y alcance: dejamos atrás iniciativas aisladas (como el antiguo Proyecto Yerba u otras ventas puntuales) para dar lugar a una <strong>Tienda Virtual unificada</strong>, donde se integren todos los productos que la escuela ofrece.</p>
+
+      <div class="callout callout-info">
+        <div class="icon">👉</div>
+        <div>
+          <div class="callout-title">La propuesta es crecer progresivamente, incorporando:</div>
+          <ul style="margin: 6px 0 0 16px;">
+            <li>Nuevos productos y proveedores</li>
+            <li>Una mejor organización logística</li>
+            <li>Distribución más equilibrada de tareas</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>🔄 Cambio de rol del referente</h3>
+      <p>En este nuevo modelo, el rol del referente evoluciona:</p>
+      <table class="wiki-table">
+        <thead><tr><th>Antes</th><th>Ahora</th></tr></thead>
+        <tbody>
+          <tr><td>Tomaba pedidos del grado</td><td>Nexo de comunicación y difusión dentro de su grupo</td></tr>
+          <tr><td>Recibía y distribuía paquetes</td><td>Acompaña el proceso de compra desde la comunidad</td></tr>
+          <tr><td>Gestionaba la cobranza</td><td>Participa en la dinámica de entrega directa desde la Tienda</td></tr>
+        </tbody>
+      </table>
+
+      <h3>📦 Organización de las entregas</h3>
+      <p>Para evitar demoras y filas en el punto de retiro, se organizarán <strong>días específicos de entrega por grado</strong>. La coordinación estará a cargo de la administración del proyecto (Referente Yuli) en comunicación con los referentes. Por ejemplo:</p>
+      <table class="wiki-table">
+        <thead><tr><th>Grados</th><th>Día de entrega</th></tr></thead>
+        <tbody>
+          <tr><td>Jardín y 1° grado</td><td>Lunes</td></tr>
+          <tr><td>2° y 3° grado</td><td>Martes</td></tr>
+          <tr><td colspan="2" style="color:var(--muted);font-style:italic">y así sucesivamente… (a definir)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>🔐 Sistema de control con PIN</h3>
+      <p>Cada referente contará con un <strong>PIN personal</strong> con el cual se registrará la entrega de productos. Esto permite:</p>
+      <ul>
+        <li>Tener trazabilidad de la mercadería</li>
+        <li>Controlar el stock entregado</li>
+        <li>Ordenar el proceso de distribución</li>
       </ul>
+
+      <h3>🤝 Acompañamiento durante el primer mes</h3>
+      <p>Durante el primer mes, se espera que cada referente:</p>
+      <ul>
+        <li>Evacúe dudas a las familias sobre el uso de la tienda virtual y el retiro de mercadería</li>
+        <li>Acompañe presencialmente la instancia de entrega</li>
+        <li>Trabaje junto al equipo de gestión para asegurar que el sistema funcione correctamente</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <div class="icon">🌱</div>
+        <div>Este cambio busca simplificar procesos, mejorar la organización y potenciar el crecimiento del proyecto, siempre en beneficio de toda la comunidad. Ante cualquier duda, estamos disponibles para acompañarlos en esta transición.</div>
+      </div>
+
+      <h3>📲 Flujo de Entrega con Código QR</h3>
+      <p>El sistema de entrega funciona con un código QR único por pedido. Así es el proceso paso a paso:</p>
+
+      <div class="callout callout-info">
+        <div class="icon">🔒</div>
+        <div><div class="callout-title">Importante: el QR solo se envía cuando el pago fue confirmado</div>
+        Si una familia dice que no recibió el QR, significa que el pago aún no fue procesado. No se entrega mercadería sin QR.</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">La familia compra y paga en la tienda</div>
+            <p class="step-desc">Una vez confirmado el pago, la familia recibe automáticamente un <strong>código QR por email</strong>. Ese QR es su comprobante de compra y el que presenta en el punto de retiro.</p>
+          </div>
+        </div>
+        <div class="step-connector"><div></div></div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">La familia presenta el QR en el punto de retiro</div>
+            <p class="step-desc">En el día y horario asignado a su grado, la familia muestra el código QR desde su celular al referente.</p>
+          </div>
+        </div>
+        <div class="step-connector"><div></div></div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">El referente escanea el QR</div>
+            <p class="step-desc">Con la cámara del celular (sin necesidad de ninguna app), el referente escanea el QR. Se abre automáticamente una página web con el detalle del pedido: qué productos debe entregar y en qué cantidades.</p>
+          </div>
+        </div>
+        <div class="step-connector"><div></div></div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Verificación y entrega</div>
+            <p class="step-desc">El referente revisa los productos, los entrega a la familia y <strong>ingresa su PIN personal</strong> en el campo correspondiente de la página.</p>
+          </div>
+        </div>
+        <div class="step-connector"><div></div></div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <div class="step-title">Confirmar entrega</div>
+            <p class="step-desc">El referente presiona el botón <strong>"Entregar Pedido"</strong>. El sistema registra la entrega y el pedido queda cerrado.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAQ REFERENTES -->
+    <div class="section" id="faq">
+      <h2><span class="icon">❓</span> Preguntas Frecuentes — Referentes</h2>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Hacé clic en cada pregunta para ver la respuesta.</p>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Qué tengo que hacer yo como referente ahora? <span class="arrow">▶</span></div>
+        <div class="faq-body">Tu rol cambia: ya no tomás pedidos ni manejás la cobranza. Ahora sos el nexo de comunicación entre el equipo de gestión y las familias de tu grado. Acompañás presencialmente la instancia de entrega y ayudás a evacuar dudas sobre cómo usar la tienda virtual.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Cómo hacen las familias para comprar? <span class="arrow">▶</span></div>
+        <div class="faq-body">Las familias ingresan directamente a la tienda virtual en <a href="https://tiendadientedeleon.mitiendanube.com/" target="_blank" style="color:var(--green);font-weight:600">tiendadientedeleon.mitiendanube.com</a>, eligen los productos, pagan online y coordinan el retiro. No hace falta que el referente tome el pedido ni cobre.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Cuándo y dónde se retira la mercadería? <span class="arrow">▶</span></div>
+        <div class="faq-body">Las entregas se organizan por día según el grado, para evitar filas. El lugar de retiro es la Tienda (Claudio) o Tienda Secu. Los días específicos por grado se coordinan entre Yuli y los referentes antes de cada ciclo de entregas.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Qué es el PIN y cómo lo uso? <span class="arrow">▶</span></div>
+        <div class="faq-body">Cada referente recibe un PIN personal que se usa al momento de registrar la entrega de los productos. Es para tener trazabilidad: saber qué se entregó, a quién y cuándo. Te lo comunica el equipo de gestión antes de tu primer turno.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Una familia no sabe cómo usar la tienda virtual, ¿qué le digo? <span class="arrow">▶</span></div>
+        <div class="faq-body">Podés compartirle el link directo a la tienda: <a href="https://tiendadientedeleon.mitiendanube.com/" target="_blank" style="color:var(--green);font-weight:600">tiendadientedeleon.mitiendanube.com</a>. El proceso es igual al de cualquier tienda online: eligen el producto, pagan y coordinan retiro. Si la duda persiste, la derivás al equipo de gestión (Yuli).</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Qué pasa si una familia no recibió su pedido o hay un error? <span class="arrow">▶</span></div>
+        <div class="faq-body">El referente no resuelve incidentes de stock o pedidos directamente. Lo que podés hacer es registrar el problema y comunicarlo al equipo de gestión para que lo resuelvan con el proveedor o la Gestoría de Tienda.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">¿Con quién me comunico si tengo una duda operativa? <span class="arrow">▶</span></div>
+        <div class="faq-body">El contacto principal es Yuli (Referente de coordinación). Para temas técnicos de la tienda o la wiki, podés escribirle a Ines Robertson.</div>
+      </div>
+
     </div>
 
     <hr>
@@ -706,6 +880,14 @@
   document.querySelectorAll('.sidebar a').forEach(a => a.addEventListener('click', () => {
     if (window.innerWidth <= 768) closeSidebar();
   }));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      item.classList.toggle('open');
+    });
+  });
 
   // Highlight active sidebar link on scroll
   const sections = document.querySelectorAll('.section');
